@@ -1,0 +1,107 @@
+VERSION 5.00
+Begin VB.PropertyPage pagGeneral 
+   Caption         =   "General"
+   ClientHeight    =   3600
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   4800
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   3600
+   ScaleWidth      =   4800
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "Date mask format"
+      Height          =   435
+      Index           =   0
+      Left            =   390
+      TabIndex        =   0
+      Top             =   600
+      Value           =   -1  'True
+      Width           =   1755
+   End
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "Phone mask format"
+      Height          =   435
+      Index           =   2
+      Left            =   390
+      TabIndex        =   1
+      Top             =   1215
+      Width           =   1755
+   End
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "SSN mask format"
+      Height          =   435
+      Index           =   3
+      Left            =   390
+      TabIndex        =   2
+      Top             =   1845
+      Width           =   1755
+   End
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "Zip Code mask format"
+      Height          =   435
+      Index           =   4
+      Left            =   390
+      TabIndex        =   3
+      Top             =   2445
+      Width           =   1965
+   End
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "Email mask format"
+      Height          =   435
+      Index           =   6
+      Left            =   2460
+      TabIndex        =   5
+      Top             =   1530
+      Width           =   1965
+   End
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "Custom mask format"
+      Height          =   435
+      Index           =   7
+      Left            =   2460
+      TabIndex        =   6
+      Top             =   2145
+      Width           =   1965
+   End
+   Begin VB.OptionButton optGeneral 
+      Caption         =   "Currency mask format"
+      Height          =   435
+      Index           =   5
+      Left            =   2460
+      TabIndex        =   4
+      Top             =   915
+      Width           =   1965
+   End
+End
+Attribute VB_Name = "pagGeneral"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+Dim blnINIT As Boolean
+Dim intOption As Integer
+
+Private Sub chkEnter_Click()
+    Changed = True
+End Sub
+
+Private Sub optGeneral_Click(Index As Integer)
+    If blnINIT Then Exit Sub
+    intOption = Index
+    SelectedControls(0).MaskType = Index
+    Changed = True
+End Sub
+
+Private Sub PropertyPage_ApplyChanges()
+    SelectedControls(0).MaskType = intOption
+End Sub
+
+Private Sub PropertyPage_Paint()
+    blnINIT = True
+    SelectedControls(0).GetGeneralSettings
+    optGeneral(SelectedControls(0).MaskType).Value = True
+    Changed = False
+    blnINIT = False
+End Sub
+

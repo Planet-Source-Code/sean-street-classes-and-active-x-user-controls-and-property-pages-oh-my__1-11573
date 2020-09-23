@@ -1,0 +1,63 @@
+VERSION 5.00
+Begin VB.PropertyPage pagZip 
+   Caption         =   "Zip Code"
+   ClientHeight    =   3600
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   4800
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   3600
+   ScaleWidth      =   4800
+   Begin VB.CheckBox chkZip 
+      Caption         =   "Only allow 5 character zip codes"
+      Height          =   435
+      Left            =   1050
+      TabIndex        =   0
+      Top             =   960
+      Width           =   2655
+   End
+   Begin VB.Label lblSample 
+      Alignment       =   2  'Center
+      Caption         =   "Sample: 12345-6789"
+      Height          =   285
+      Left            =   60
+      TabIndex        =   1
+      Top             =   3120
+      Width           =   4665
+   End
+End
+Attribute VB_Name = "pagZip"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+Private Sub chkZip_Click()
+    If chkZip.Value = 0 Then
+        lblSample.Caption = "Sample: 12345-6789"
+    Else
+        lblSample.Caption = "Sample: 12345"
+    End If
+    Changed = True
+End Sub
+
+Private Sub PropertyPage_Paint()
+    Dim ctlCont As Control
+    If SelectedControls(0).MaskType = 4 Then
+        chkZip.Value = Abs(SelectedControls(0).objZip.OnlyFive)
+        For Each ctlCont In PropertyPage
+            ctlCont.Visible = True
+        Next
+    Else
+        For Each ctlCont In PropertyPage
+            ctlCont.Visible = False
+        Next
+    End If
+    Changed = False
+End Sub
+
+Private Sub PropertyPage_ApplyChanges()
+    SelectedControls(0).objZip.OnlyFive = chkZip.Value * -1
+End Sub
+
