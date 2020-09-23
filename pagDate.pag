@@ -1,0 +1,99 @@
+VERSION 5.00
+Begin VB.PropertyPage pagDate 
+   Caption         =   "Date"
+   ClientHeight    =   3600
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   4800
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   3600
+   ScaleWidth      =   4800
+   Begin VB.OptionButton optDateType 
+      Caption         =   "Long Date Type"
+      Height          =   375
+      Index           =   2
+      Left            =   1650
+      TabIndex        =   2
+      Tag             =   "January 01, 2000"
+      Top             =   1965
+      Width           =   1635
+   End
+   Begin VB.OptionButton optDateType 
+      Caption         =   "Med Date Type"
+      Height          =   375
+      Index           =   1
+      Left            =   1650
+      TabIndex        =   1
+      Tag             =   "Jan 01, 2000"
+      Top             =   1207
+      Width           =   1635
+   End
+   Begin VB.OptionButton optDateType 
+      Caption         =   "Short Date Type"
+      Height          =   375
+      Index           =   0
+      Left            =   1650
+      TabIndex        =   0
+      Tag             =   "01/01/2000"
+      Top             =   450
+      Value           =   -1  'True
+      Width           =   1635
+   End
+   Begin VB.Label lblSample 
+      Alignment       =   2  'Center
+      Caption         =   "Sample: 01/01/2000"
+      Height          =   285
+      Left            =   60
+      TabIndex        =   3
+      Top             =   3120
+      Width           =   4665
+   End
+End
+Attribute VB_Name = "pagDate"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+Dim intOption As Integer
+
+'here we change the sample to indicated to the users
+'the type of mask that will be applied.  We also set
+'the Changed flag to true so that the Apply button of
+'the property page will be enabled
+Private Sub optDateType_Click(Index As Integer)
+    lblSample.Caption = "Sample: " & optDateType(Index).Tag
+    intOption = Index
+    Changed = True
+End Sub
+
+'when the page is displayed, we first check to see
+'whether the user has indicated they want to make
+'use of the Date masking.  If so, we retrieve the values
+'for the Date property page from the INI file and we
+'make the controls visible.  If not, we simply make
+'the controls invisible
+Private Sub PropertyPage_Paint()
+    Dim ctlCont As Control
+    If SelectedControls(0).MaskType = 0 Then
+        optDateType(SelectedControls(0).objDate.DateTypeMask).Value = True
+        For Each ctlCont In PropertyPage
+            ctlCont.Visible = True
+        Next
+    Else
+        For Each ctlCont In PropertyPage
+            ctlCont.Visible = False
+        Next
+    End If
+    Changed = False
+End Sub
+
+'When the Apply button is clicked or the page looses
+'focus, this event is fired, whick saves the changes by
+'setting the DateTypeMask property of the clsDate class
+'object.  Inside the  DateTypeMask property of the clsDate
+'class object, we have code that writes the data to the INI
+'file
+Private Sub PropertyPage_ApplyChanges()
+    SelectedControls(0).objDate.DateTypeMask = intOption
+End Sub

@@ -1,0 +1,81 @@
+[Root]
+Most Recent Package=Setup 9/18
+
+
+[Package|Setup 9/18|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\CSS\Common Business Rules\Ctrl\Distribute
+Controls Design-Time Support=Yes
+
+[Package|Setup 9/18|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Setup 9/18|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Setup 9/18|Files Found]
+
+[Package|Setup 9/18|Files Released]
+
+[Package|Setup 9/18|Missing Dependency Information]
+
+[Package|Setup 9/18|Out-of-Date Dependency Information]
+
+[Package|Setup 9/18|Files Added]
+C:\WINNT\System32\MsStkPrp.dll=This file is needed for usercontrol design-time support.
+
+[Package|Setup 9/18|Files Removed]
+
+[Package|Setup 9/18|Files In Project]
+C:\CSS\Common Business Rules\Ctrl\Common Business Rules.ocx=Yes
+C:\WINNT\SYSTEM32\msvbvm60.dll=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\SYSTEM32\VB6STKIT.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\WINNT\SYSTEM32\MSSTKPRP.DLL=Yes
+
+[Package|Setup 9/18|Configure Registry Files]
+Applicable=No
+
+[Package|Setup 9/18|Configure Remote Servers]
+Applicable=No
+
+[Package|Setup 9/18|Install Locations]
+C:\CSS\Common Business Rules\Ctrl\Common Business Rules.ocx=$(AppPath)
+C:\WINNT\SYSTEM32\msvbvm60.dll=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\SYSTEM32\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\WINNT\SYSTEM32\MSSTKPRP.DLL=$(WinSysPath)
+
+[Package|Setup 9/18|Configure Shared Files]
+Applicable=Yes
+C:\CSS\Common Business Rules\Ctrl\Common Business Rules.ocx=No
+
+[Package|Setup 9/18|Distribution]
+Type=single
+Size=
+Title=Common-Sense Software Common Business Objects
+
+[Package|Setup 9/18|Package]
+PackageFolder=C:\CSS\Common Business Rules\Ctrl\Distribute
+ProjectFolder=C:\CSS\Common Business Rules\Ctrl
+ServerSideCab=
+File1=C:\CSS\Common Business Rules\Ctrl\Distribute\setup.exe
+File2=C:\CSS\Common Business Rules\Ctrl\Distribute\Setup.Lst
+File3=C:\CSS\Common Business Rules\Ctrl\Distribute\Common Business Rules.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
